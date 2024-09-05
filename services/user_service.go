@@ -24,6 +24,8 @@ func NewUserService(repo repository.UserRepository) UserService {
 
 func (s *userService) RegisterUser(username, password, role string) error {
 	// Şifreyi hashleyelim
+	//bcrypt.Cost(10) // sayi arttikca hiz azalir guvenlik artar defult-10
+	//bcrypt.CompareHashAndPassword
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		return err
